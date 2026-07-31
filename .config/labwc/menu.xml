@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu>
+  <menu id="root-menu" label="Main Menu">
+    
+    <!-- 1. Hier wordt de labwc-menu-generator LIVE geladen -->
+    <menu id="apps-menu" label="Applications" execute="labwc-menu-generator" />
+    
+    <separator />
+    
+    <!-- 2. Jouw vaste Engelse Core Apps -->
+    <item label="Terminal">
+      <action name="Execute" command="foot" />
+    </item>
+    <item label="Web Browser">
+      <action name="Execute" command="firefox" />
+    </item>
+    <item label="File Manager">
+      <action name="Execute" command="thunar" />
+    </item>
+    
+    <separator />
+    
+    <!-- 3. De gevraagde configuratie-opties -->
+    <menu id="config-menu" label="Preferences">
+      <item label="Edit Autostart">
+        <action name="Execute" command="foot nano ~/.config/labwc/autostart" />
+      </item>
+      <item label="Edit RC (Keybinds)">
+        <action name="Execute" command="foot nano ~/.config/labwc/rc.xml" />
+      </item>
+      <item label="Edit Menu">
+        <action name="Execute" command="foot nano ~/.config/labwc/menu.xml" />
+      </item>
+      <separator />
+      <item label="Reload Labwc">
+        <action name="Reconfigure" />
+      </item>
+    </menu>
+    
+    <separator />
+    
+    <!-- 4. Systeembeheer -->
+    <menu id="system-menu" label="System">
+      <item label="Reboot">
+        <action name="Execute" command="loginctl reboot" />
+      </item>
+      <item label="Power Off">
+        <action name="Execute" command="loginctl poweroff" />
+      </item>
+      <item label="Exit Labwc">
+        <action name="Exit" />
+      </item>
+    </menu>
+    
+  </menu>
+</openbox_menu>

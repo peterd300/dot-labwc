@@ -1,0 +1,33 @@
+#!/bin/sh
+
+export WLR_NO_HARDWARE_CURSORS=1
+vmware-user&
+
+
+
+# 1. Polkit Authentication Agent (Voor grafische root-rechten, bijv. GParted)
+if [ -x /usr/libexec/polkit-gnome-authentication-agent-1 ]; then
+    /usr/libexec/polkit-gnome-authentication-agent-1 &
+elif [ -x /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 ]; then
+    /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+fi
+
+# 2. XDG Desktop Portal (Cruciaal voor schermdelen en flatpaks onder Wayland)
+if [ -x /usr/libexec/xdg-desktop-portal ]; then
+    /usr/libexec/xdg-desktop-portal &
+fi
+
+# 3. Audio & Schermdelen via PipeWire (Zorg dat 'pipewire' geïnstalleerd is)
+if command -v pipewire >/dev/null; then
+    pipewire &
+    wireplumber &
+    pipewire-pulse &
+fi
+
+# 4. Desktopomgeving componenten (Achtergrond en Statusbalk)
+# Pas "background.jpg" aan naar het pad van jouw eigen achtergrondafbeelding
+swaybg -i ~/Afbeeldingen/background.jpg -m fill &
+waybar &
+
+# 5. Netwerkicoon in het systeemvak (Optioneel, vereist 'network-manager-applet')
+nm-applet --indicator &

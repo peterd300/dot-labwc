@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu>
+  <menu id="root-menu" label="Main Menu">
+
+    <!-- Hier komen straks automatisch de geïnstalleerde apps (Stap 2) -->
+
+    <separator />
+
+    <!-- Configuration Submenu -->
+    <menu id="config-menu" label="Preferences">
+      <item label="Edit Autostart">
+        <action name="Execute" command="foot nano ~/.config/labwc/autostart" />
+      </item>
+      <item label="Edit RC (Keybinds)">
+        <action name="Execute" command="foot nano ~/.config/labwc/rc.xml" />
+      </item>
+      <item label="Edit Menu Template">
+        <action name="Execute" command="foot nano ~/.config/labwc/menu.xml.static" />
+      </item>
+      <separator />
+      <item label="Reload Labwc">
+        <action name="Reconfigure" />
+      </item>
+    </menu>
+
+    <separator />
+
+    <!-- System Controls -->
+    <menu id="system-menu" label="System">
+      <item label="Reboot">
+        <action name="Execute" command="loginctl reboot" />
+      </item>
+      <item label="Power Off">
+        <action name="Execute" command="loginctl poweroff" />
+      </item>
+      <item label="Exit Labwc">
+        <action name="Exit" />
+      </item>
+    </menu>
+
+  </menu>
+</openbox_menu>
