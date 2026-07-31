@@ -133,4 +133,9 @@ wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
 unzip JetBrainsMono-2.304.zip -d /tmp/jetbrains-mono
 sudo mv /tmp/jetbrains-mono/fonts/* /usr/local/share/fonts/JetbrainsMono/.
 fc-cache -f -v
+rm ~/dot-labwc/JetBrainsMono-2.304.zip
 
+sudo usermod -Ag _seatd,input,video,audio peter
+
+
+echo "End of script"
